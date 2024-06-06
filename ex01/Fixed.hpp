@@ -6,13 +6,14 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:18:31 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/06 14:23:27 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:39:36 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include <cmath>
 
 class Fixed
 {
@@ -30,18 +31,9 @@ class Fixed
 		int		getRawBits(void) const;
 		void	setRawBits(const int raw);
 		static	float pow(float base, int exp);
+		float	toFloat(void) const;
+		int		toInt(void) const;
+		
 };
 
-float Fixed::pow(float base, int exp)
-{
-	float newFloat;
-
-	newFloat = base;
-    if (exp == 0)
-		return(1);
-	if (exp == 1)
-		return (base);
-	while (--exp)
-		newFloat *= base;
-	return (newFloat);
-}
+std::ostream &operator<<(std::ostream &out, Fixed const &i);
